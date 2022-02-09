@@ -12,13 +12,21 @@ const DIFF = document.querySelector('#diff')
  */
 const diffcultySetting = document.querySelector('#diffculty')
 
+const defaultSetting = +diffcultySetting.value;
+console.log(defaultSetting)
+
+
 diffcultySetting.addEventListener('input', handleInput);
 
-const firstDiffculty = +diffcultySetting.step
+let addCounter = 0;
 
 function handleInput(e) {
     const diffcultyLevel = +e.target.value;
     console.log(diffcultyLevel)
+    if (diffcultyLevel > defaultSetting && addCounter !== 5) {
+    rowMaker(diffcultyLevel)
+    addCounter++;
+    }
 }
 
 // oninput => Track the diffculty
@@ -30,7 +38,7 @@ function rowMaker(level) {
     // Parent Div
     const rowParentDiv = document.createElement('div');
     rowParentDiv.className = "row";
-    rowParentDiv.id = `row6`;
+    rowParentDiv.id = `row${level}`;
     // Child Divs'
     const rowChildDiv1 = document.createElement('div');
     rowChildDiv1.className = "tile";
@@ -48,7 +56,10 @@ function rowMaker(level) {
     rowParentDiv.appendChild(rowChildDiv4);
     rowParentDiv.appendChild(rowChildDiv5);
     board.appendChild(rowParentDiv)
-    // console.log(rowParentDiv)
+}
+
+function rowRemover() {
+
 }
 
 // rowMaker();
