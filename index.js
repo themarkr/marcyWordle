@@ -5,79 +5,65 @@ window.addEventListener('DOMContentLoaded', () => {
     let numOfRows = rows.length;
     let attempts = 0;
 
-    const row1Tiles = document.getElementById('row1').childNodes;
-    const row2Tiles = document.getElementById('row2').childNodes;
-    const row3Tiles = document.getElementById('row3').childNodes;
-    const row4Tiles = document.getElementById('row4').childNodes;
-    const row5Tiles = document.getElementById('row5').childNodes;
+    const row1Tiles = document.getElementById('row1').children;
+    // const wrong = document.getElementById('')
+    const row2Tiles = document.getElementById('row2').children;
+    const row3Tiles = document.getElementById('row3').children;
+    const row4Tiles = document.getElementById('row4').children;
+    const row5Tiles = document.getElementById('row5').children;
     const submitForm = document.querySelector('form');
 
-    let answer = pickWord()
+    let answer = pickWord();
     console.log(answer);
 
     function changeColor(tile, i, guessWord) {
         let tileText = tile.innerText;
         console.log(tile, i, guessWord, tileText);
-        if (tileText === guessWord[i]) {
-            tile.style.backgroundColor = "green";
-        } else if (guessWord.includes(tileText)) {
-            tile.style.backgroundColor = "yellow";
+        if (tileText === answer[i]) {
+            tile.style.backgroundColor = "#538d4e";
+        } else if (answer.includes(tileText)) {
+            tile.style.backgroundColor = "#b59f3b";
         } else {
-            tile.style.backgroundColor = "gray"
+            tile.style.backgroundColor = "#3a3a3c";
         }
     }
 
     function updateTiles(totalAttempts) {
-        let i = 0;
         let guess = document.getElementById('guess-input').value
         switch (totalAttempts) {
             case 1:
-                row1Tiles.forEach((tile, i) => {
-                    // console.log(guess[i])
-                    let word = guess[i]
-                    console.log(word)
-
-
-                    row1Tiles[i].innerText = word;
-                    // row1Tiles[i].innerText = "hello";
-
-                    changeColor(tile, i, guess);
-                    // i++;
-                })
+                console.log(row1Tiles);
+                for (let i = 0; i < row1Tiles.length; i++) {
+                    row1Tiles[i].innerText = guess[i];
+                    changeColor(row1Tiles[i], i, guess);
+                }
                 break;
             case 2:
-                // let i = 0;
-                row2Tiles.forEach(tile => {
-                    tile.innerText = guess[i];
-                    changeColor(tile, i, guess);
-                    i++;
-                })
+                for (let i = 0; i < row1Tiles.length; i++) {
+                    row2Tiles[i].innerText = guess[i];
+                    changeColor(row2Tiles[i], i, guess);
+                }
                 break;
             case 3:
-                // let i = 0;
-                row3Tiles.forEach(tile => {
-                    tile.innerText = guess[i];
-                    changeColor(tile, i, guess);
-                    i++;
-                })
+                for (let i = 0; i < row1Tiles.length; i++) {
+                    row3Tiles[i].innerText = guess[i];
+                    changeColor(row3Tiles[i], i, guess);
+                }
                 break;
             case 4:
-                // let i = 0;
-                row4Tiles.forEach(tile => {
-                    tile.innerText = guess[i];
-                    changeColor(tile, i, guess);
-                    i++;
-                })
+                for (let i = 0; i < row1Tiles.length; i++) {
+                    row4Tiles[i].innerText = guess[i];
+                    changeColor(row4Tiles[i], i, guess);
+                }
                 break;
             case 5:
-                // let i = 0;
-                row5Tiles.forEach(tile => {
-                    tile.innerText = guess[i];
-                    changeColor(tile, i, guess);
-                    i++;
-                })
+                for (let i = 0; i < row1Tiles.length; i++) {
+                    row5Tiles[i].innerText = guess[i];
+                    changeColor(row5Tiles[i], i, guess);
+                }
                 break;
-
+                // left off at creating a default case 
+                // default:
         }
     }
 

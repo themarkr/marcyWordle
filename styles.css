@@ -1,5 +1,5 @@
 body {
-    background-color: gray;
+    background-color: #121213;
 }
 
 .board {
@@ -19,6 +19,8 @@ body {
     margin-bottom: .1em;
     margin-right: .25em;
     background-color: white;
+    text-align: center;
+    /* vertical-align: middle; */
 }
 
 h3 {
