@@ -23,6 +23,7 @@ function handleInput(e) {
 
 // oninput => Track the diffculty
 // onchange => Track the change in diffculty
+// remove => removes the element from the tree it belongs to
 
 const board = document.querySelector('#board')
 function rowMaker(level) {
@@ -50,18 +51,5 @@ function rowMaker(level) {
     // console.log(rowParentDiv)
 }
 
-rowMaker();
-
-
-
-// diffcultySetting.addEventListener('change', logOut)
-// function logOut(e) {
-//     // console.log("hello World")
-//     e.getAttribute('step');
-// }
-
-// console.log(+diffcultySetting.getAttribute('step'))
-
-// function addNewRow() {
-// }
+// rowMaker();
 

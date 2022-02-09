@@ -57,24 +57,13 @@
         <form>
             <input type="text" id="guess-input" maxlength="5 ">
             <br>
-            <input type="submit ">
+            <input type="range" id="word-length" min="1" max="10" step="1" value="1">
             <br>
+            <label for="diffculty">Diffculty</label>
             <br>
-            <h3>New Game</h3>
-            <input type="submit ">
-            <br>
-            <div class="settings ">
-                <p>Settings:</p>
-                <label>Word Length</label>
-                <br>
-                <input type="range " id="word-length" min="1 " max="10 " step="1 " value="5 ">
-                <br>
-                <label>Diffculty</label>
-                <br>
-                <input type="range " id="diffculty " min="1 " max="10 " step="1 " value="6 ">
-                <button type="click " id="diff " onchange="logout(this) ">Diff</button>
-            </div>
-        </form>
+            <input type="range" id="diffculty" min="2" max="10" step="1" value="5">
+    </div>
+    </form>
     </div>
     <!-- Keyboard Layout -->
     <div data-keyboard class="keyboard ">
