@@ -1,5 +1,5 @@
 body {
-    background-color: black;
+    background-color: gray;
 }
 
 .board {
@@ -19,4 +19,12 @@ body {
     margin-bottom: .1em;
     margin-right: .25em;
     background-color: white;
+}
+
+h3 {
+    color: white;
+}
+
+h1 {
+    text-align: center;
 }
