@@ -13,18 +13,18 @@ window.addEventListener('DOMContentLoaded', () => {
     const row5Tiles = document.getElementById('row5').children;
     const submitForm = document.querySelector('form');
 
-    let answer = pickWord()
+    let answer = pickWord();
     console.log(answer);
 
     function changeColor(tile, i, guessWord) {
         let tileText = tile.innerText;
         console.log(tile, i, guessWord, tileText);
         if (tileText === answer[i]) {
-            tile.style.backgroundColor = "green";
-        } else if (guessWord.includes(tileText)) {
-            tile.style.backgroundColor = "yellow";
+            tile.style.backgroundColor = "#538d4e";
+        } else if (answer.includes(tileText)) {
+            tile.style.backgroundColor = "#b59f3b";
         } else {
-            tile.style.backgroundColor = "gray"
+            tile.style.backgroundColor = "#3a3a3c";
         }
     }
 
