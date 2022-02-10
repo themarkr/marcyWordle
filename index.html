@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <h1>Marcy Wordle</h1>
+        <h1>BETTER WORDLE</h1>
     </header>
     <!-- Game Board -->
     <div class="board" id="board">
@@ -52,11 +52,15 @@
             <div class="tile"></div>
         </div>
     </div>
-    <!-- Input Fields  -->
+
+    <div id="error-message"></div>
+
+    <!-- Input Fields -->
     <div class="input-guess">
         <form>
             <input type="text" id="guess-input" maxlength="5 ">
             <button type="submit" id="submit-button">Submit Guess</button>
+            <button type="button" id="new-gane">New Game</button>
             <input type="range" id="word-length" min="1" max="10" step="1" value="5">
             <br>
             <label for="diffculty">Diffculty</label>
