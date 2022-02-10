@@ -35,6 +35,10 @@
                 /* vertical-align: middle; */
             }
             
+            .class {
+                display: grid;
+            }
+            
             h3 {
                 color: white;
             }
