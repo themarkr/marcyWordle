@@ -90,8 +90,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     // console.log(numOfRows);
     if (attempts >= numOfRows) {
-        submitForm.disabled = true;
-        c
+        submitButton.disabled = true;
     }
 
     function onSubmit(event) { // function for when we hit submit
