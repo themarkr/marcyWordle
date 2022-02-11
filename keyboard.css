@@ -4,9 +4,9 @@
     grid-auto-rows: 3em;
     gap: .25em;
     justify-content: center;
-  }
-  
-  .key {
+}
+
+.key {
     font-size: inherit;
     grid-column: span 2;
     border: none;
@@ -14,44 +14,42 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: hsl(
-      var(--hue, 200),
-      var(--saturation, 1%),
-      calc(var(--lightness-offset, 0%) + var(--lightness, 51%))
-    );
-    color: white;
-    fill: white;
+    background-color: #818384;
+    /* color: white; */
+    /* fill: white; */
     text-transform: uppercase;
     border-radius: .25em;
     cursor: pointer;
     user-select: none;
-  }
-  
-  .key.large {
+}
+
+.key.large {
     grid-column: span 3;
-  }
-  
-  .key > svg {
+}
+
+.key>svg {
     width: 1.75em;
     height: 1.75em;
-  }
-  
-  .key:hover, .key:focus {
+}
+
+
+/* .key:hover,
+.key:focus {
     --lightness-offset: 10%;
-  }
-  
-  .key.wrong {
+}
+
+.key.wrong {
     --lightness: 23%;
-  }
-  
-  .key.wrong-location {
+}
+
+.key.wrong-location {
     --hue: 49;
     --saturation: 51%;
     --lightness: 47%;
-  }
-  
-  .key.correct {
+}
+
+.key.correct {
     --hue: 115;
     --saturation: 29%;
     --lightness: 43%;
-  }
+} */

@@ -32,6 +32,9 @@
                 margin-right: .25em;
                 background-color: #121213;
                 text-align: center;
+                font-size: 2em;
+                font-weight: bold;
+                color: white;
                 /* vertical-align: middle; */
             }
             
