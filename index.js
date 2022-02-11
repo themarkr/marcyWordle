@@ -77,21 +77,15 @@ window.addEventListener('DOMContentLoaded', () => {
                     changeColor(row5Tiles[i], i, guess);
                 }
                 break;
-                //to do 
-                // input validation
-                // game over check
-                // disable button on some checks
-                // new game button that will
-                //      clear the board
-                //      generate a new random word for the game
-                //      reset attempts to 0
-
+            default:
+                errorMessage.innerText = "GAME OVER!"
         }
     }
-    // console.log(numOfRows);
-    if (attempts >= numOfRows) {
-        submitButton.disabled = true;
-    }
+
+    // // console.log(numOfRows);
+    // if (attempts >= numOfRows) {
+    //     submitButton.disabled = true;
+    // }
 
     function onSubmit(event) { // function for when we hit submit
         event.preventDefault(); // prevent the page from reloading
