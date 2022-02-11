@@ -95,7 +95,6 @@ window.addEventListener('DOMContentLoaded', () => {
         errorMessage.innerText = ""
             //get guess from input field
         let guess = document.getElementById('guess-input').value.toUpperCase()
-        console.log(guess)
             // input validation 
             // check if guess is correct length and an english word
         if (guess.length === answer.length && filteredWordBank.includes(guess.toLowerCase())) {
@@ -107,7 +106,7 @@ window.addEventListener('DOMContentLoaded', () => {
         } else if (guess.length === answer.length && !filteredWordBank.includes(guess.toLowerCase())) {
             errorMessage.innerText = "Thats not a word!";
         } else {
-            console.log('neither')
+            errorMessage.innerText = "Your guess is too short!"
         }
         document.getElementById('guess-input').value = "";
     }
