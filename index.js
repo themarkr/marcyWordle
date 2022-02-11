@@ -14,67 +14,70 @@ window.addEventListener('DOMContentLoaded', () => {
     const submitButton = document.getElementById('submit-button');
     const errorMessage = document.getElementById('error-message');
 
-    let answer = pickWord();
+    let answer = pickWord().toUpperCase();
     console.log(answer);
 
-    function changeColor(tile, i, guessWord) {
-        let tileText = tile.innerText;
-        if (tileText === answer[i]) {
-            tile.style.backgroundColor = "#538d4e";
-            tile.style.borderColor = "#538d4e"
-                // changeKeyboardColor(tileText, )
-        } else if (answer.includes(tileText)) {
-            tile.style.backgroundColor = "#b59f3b";
-            tile.style.borderColor = "#b59f3b"
+    function changeKeyboardColor(char, color, i) {
+        const key = document.getElementById(char);
+        console.log(key)
+        if (char === answer[i]) {
+            key.style.backgroundColor = color;
+        } else if (answer.includes(char)) {
+            key.style.backgroundColor = color;
         } else {
-            tile.style.backgroundColor = "#3a3a3c";
+            key.style.backgroundColor = color;
         }
     }
 
-    // function changeKeyboardColor(tile, i, guessWord) {
-    //     let tileText = tile.innerText;
-    //     console.log(tile, i, guessWord, tileText);
-    //     if (tileText === answer[i]) {
-    //         tile.style.backgroundColor = "#538d4e";
-    //     } else if (answer.includes(tileText)) {
-    //         tile.style.backgroundColor = "#b59f3b";
-    //     } else {
-    //         tile.style.backgroundColor = "#3a3a3c";
-    //     }
-    // }
 
-    function updateTiles(totalAttempts) {
-        let guess = document.getElementById('guess-input').value
+    function changeColor(tile, i, guessWord) {
+        let tileText = tile.innerText;
+        console.log(tileText);
+        if (tileText === answer[i]) {
+            tile.style.backgroundColor = "#538d4e";
+            tile.style.borderColor = "#538d4e"
+            changeKeyboardColor(tileText.toUpperCase(), "#538d4e", i)
+        } else if (answer.includes(tileText)) {
+            tile.style.backgroundColor = "#b59f3b";
+            tile.style.borderColor = "#b59f3b"
+            changeKeyboardColor(tileText.toUpperCase(), "#b59f3b", i)
+        } else {
+            tile.style.backgroundColor = "#3a3a3c";
+            changeKeyboardColor(tileText.toUpperCase(), "#3a3a3c", i)
+        }
+    }
+
+    function updateTiles(totalAttempts, playerGuess) {
         switch (totalAttempts) {
             case 1:
                 // console.log(row1Tiles);
                 for (let i = 0; i < row1Tiles.length; i++) {
-                    row1Tiles[i].innerText = guess[i];
-                    changeColor(row1Tiles[i], i, guess);
+                    row1Tiles[i].innerText = playerGuess[i];
+                    changeColor(row1Tiles[i], i, playerGuess);
                 }
                 break;
             case 2:
                 for (let i = 0; i < row1Tiles.length; i++) {
-                    row2Tiles[i].innerText = guess[i];
-                    changeColor(row2Tiles[i], i, guess);
+                    row2Tiles[i].innerText = playerGuess[i];
+                    changeColor(row2Tiles[i], i, playerGuess);
                 }
                 break;
             case 3:
                 for (let i = 0; i < row1Tiles.length; i++) {
-                    row3Tiles[i].innerText = guess[i];
-                    changeColor(row3Tiles[i], i, guess);
+                    row3Tiles[i].innerText = playerGuess[i];
+                    changeColor(row3Tiles[i], i, playerGuess);
                 }
                 break;
             case 4:
                 for (let i = 0; i < row1Tiles.length; i++) {
-                    row4Tiles[i].innerText = guess[i];
-                    changeColor(row4Tiles[i], i, guess);
+                    row4Tiles[i].innerText = playerGuess[i];
+                    changeColor(row4Tiles[i], i, playerGuess);
                 }
                 break;
             case 5:
                 for (let i = 0; i < row1Tiles.length; i++) {
-                    row5Tiles[i].innerText = guess[i];
-                    changeColor(row5Tiles[i], i, guess);
+                    row5Tiles[i].innerText = playerGuess[i];
+                    changeColor(row5Tiles[i], i, playerGuess);
                 }
                 break;
             default:
@@ -91,17 +94,20 @@ window.addEventListener('DOMContentLoaded', () => {
         event.preventDefault(); // prevent the page from reloading
         errorMessage.innerText = ""
             //get guess from input field
-        let guess = document.getElementById('guess-input').value
+        let guess = document.getElementById('guess-input').value.toUpperCase()
+        console.log(guess)
             // input validation 
             // check if guess is correct length and an english word
-        if (guess.length === answer.length && filteredWordBank.includes(guess)) {
+        if (guess.length === answer.length && filteredWordBank.includes(guess.toLowerCase())) {
             // if it is, update attempts by 1
             // call update tiles function
             // reset input field to be blank
             attempts++;
-            updateTiles(attempts);
-        } else if (guess.length === answer.length && !filteredWordBank.includes(guess)) {
+            updateTiles(attempts, guess);
+        } else if (guess.length === answer.length && !filteredWordBank.includes(guess.toLowerCase())) {
             errorMessage.innerText = "Thats not a word!";
+        } else {
+            console.log('neither')
         }
         document.getElementById('guess-input').value = "";
     }
