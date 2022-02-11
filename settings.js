@@ -15,12 +15,12 @@ const defaultSetting = +diffcultySetting.value;
 console.log(defaultSetting)
 
 /* This allows the slider of the diffculty setting to be tracked */
-diffcultySetting.addEventListener('input', handleInput);
+diffcultySetting.addEventListener('input', rowManpulation);
 // diffcultySetting.addEventListener('input', deletingRows);
 
 let temp = defaultSetting;
 
-function handleInput(e) {
+function rowManpulation(e) {
     const diffcultyLevel = +e.target.value;
     console.log(diffcultyLevel)
     if (temp < diffcultyLevel) {
@@ -31,13 +31,15 @@ function handleInput(e) {
     }
     
     if (temp > diffcultyLevel) {
-        rowRemover(diffcultyLevel)
+        // debugger;
+        rowRemover(diffcultyLevel + 1);
         temp--;
         console.log(`removing ${temp}`)
         return
     }
     
 }
+
 
 /*
 Adding/Deleting Rows =>
@@ -67,15 +69,15 @@ function rowMaker(level) {
     rowParentDiv.className = "row";
     rowParentDiv.id = `row${level}`;
     // Child Divs'
-    const rowChildDiv1 = document.createElement('div');
+    const rowChildDiv1 = document.createElement('p');
     rowChildDiv1.className = "tile";
-    const rowChildDiv2 = document.createElement('div');
+    const rowChildDiv2 = document.createElement('p');
     rowChildDiv2.className = "tile";
-    const rowChildDiv3 = document.createElement('div');
+    const rowChildDiv3 = document.createElement('p');
     rowChildDiv3.className = "tile";
-    const rowChildDiv4 = document.createElement('div');
+    const rowChildDiv4 = document.createElement('p');
     rowChildDiv4.className = "tile";
-    const rowChildDiv5 = document.createElement('div');
+    const rowChildDiv5 = document.createElement('p');
     rowChildDiv5.className = "tile";
     rowParentDiv.appendChild(rowChildDiv1);
     rowParentDiv.appendChild(rowChildDiv2);
