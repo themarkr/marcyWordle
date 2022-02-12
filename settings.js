@@ -26,13 +26,12 @@ remove => removes the element from the tree it belongs to
 const diffcultySetting = document.querySelector('#diffculty')
 
 /* Default Setting the game will be one when the page is loaded */
-const defaultSetting = +diffcultySetting.value;
-console.log(defaultSetting)
+const diffcultyDefaultSetting = +diffcultySetting.value;
 
 /* This allows the slider of the diffculty setting to be tracked */
 diffcultySetting.addEventListener('input', rowManpulation);
 
-let temp = defaultSetting;
+let temp = diffcultyDefaultSetting;
 
 function rowManpulation(e) {
     const diffcultyLevel = +e.target.value;
@@ -80,4 +79,19 @@ function rowRemover(level) {
     const ele = document.querySelector(`#row${level}`);
     ele.remove();
 }
+
+// /* Element */
+const word_Length = document.querySelector("#word-length");
+
+// /* Default Setting for word length */
+// const wordLengthDefaultSetting = +word_Length.value
+// console.log(wordLengthDefaultSetting)
+// /*     */
+// /*     */
+// /*     */
+// /*     */
+// /*     */
+// /*     */
+// /*     */
+// /*     */
 
