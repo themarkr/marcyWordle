@@ -6,14 +6,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marcy Wordle</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="keyboard.css">
 </head>
 
 <body>
-    <header>
-        <h1>BETTER WORDLE</h1>
-    </header>
+    <nav class="navbar navbar-light bg-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand">BETTER WORDLE</a>
+            <div class="d-flex">
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    Settings
+                  </button>
+            </div>
+        </div>
+    </nav>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Settings Menu</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="dropdown mt-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+              Difficulty
+            </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><input type="range" id="diffculty" min="2" max="10" step="1" value="5"></li>
+                </ul>
+            </div>
+            <div>
+                Changing the value of the difficulty slider willincrease or reduce the number of attempts per game. The higher the difficulty, the less number to total attempts. ***Adjusting the value of the slider will start a new game***
+            </div>
+            <div class="dropdown mt-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+              Word Length
+            </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><input type="range" id="word-length" min="1" max="10" step="1" value="5"></li>
+                </ul>
+            </div>
+            <div>
+                Changing the Word Length will increase or reduce the number of tiles per row. ***Adjusting the value of the slider, will start a new game***
+            </div>
+        </div>
+    </div>
+
     <!-- Game Board -->
     <div class="board" id="board">
         <div class="row" id="row1">
@@ -61,24 +100,11 @@
             <!-- Guessing -->
             <input type="text" id="guess-input" maxlength="5 ">
             <button type="submit" id="submit-button">Submit Guess</button>
-            <br>
-            <!-- New Game -->
-            <button type="button" id="new-gane">New Game</button>
-            <br>
-            <br>
-            <!-- Word Length -->
-            <label for="word-length">Word Length</label>
-            <br>
-            <input type="range" id="word-length" min="1" max="10" step="1" value="5">
-            <br>
-            <br>
-            <!-- diffculty -->
-            <label for="diffculty">Diffculty</label>
-            <br>
-            <input type="range" id="diffculty" min="2" max="10" step="1" value="5">
+            <button type="button" id="new-game">New Game</button>
+        </form>
+
     </div>
-    </form>
-    </div>
+
     <!-- Keyboard Layout -->
     <div data-keyboard class="keyboard ">
         <button class="key " data-key="Q" id="Q">Q</button>
@@ -117,6 +143,7 @@
           </svg>
         </button>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="generateWord.js "></script>
     <script src="settings.js "></script>
     <script src="index.js "></script>
