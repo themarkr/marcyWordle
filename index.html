@@ -16,10 +16,42 @@
         <div class="container-fluid">
             <a class="navbar-brand">BETTER WORDLE</a>
             <div class="d-flex">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    Settings
+                  </button>
             </div>
         </div>
     </nav>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Settings Menu</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="dropdown mt-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+              Difficulty
+            </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><input type="range" id="diffculty" min="2" max="10" step="1" value="5"></li>
+                </ul>
+            </div>
+            <div>
+                Changing the value of the difficulty slider willincrease or reduce the number of attempts per game. The higher the difficulty, the less number to total attempts. ***Adjusting the value of the slider will start a new game***
+            </div>
+            <div class="dropdown mt-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+              Word Length
+            </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><input type="range" id="word-length" min="1" max="10" step="1" value="5"></li>
+                </ul>
+            </div>
+            <div>
+                Changing the Word Length will increase or reduce the number of tiles per row. ***Adjusting the value of the slider, will start a new game***
+            </div>
+        </div>
+    </div>
 
     <!-- Game Board -->
     <div class="board" id="board">
@@ -67,15 +99,10 @@
         <form>
             <input type="text" id="guess-input" maxlength="5 ">
             <button type="submit" id="submit-button">Submit Guess</button>
-            <button type="button" id="new-gane">New Game</button>
-            <input type="range" id="word-length" min="1" max="10" step="1" value="5">
-            <br>
-            <label for="diffculty">Diffculty</label>
-            <br>
-            <input type="range" id="diffculty" min="2" max="10" step="1" value="5">
+            <button type="button" id="new-game">New Game</button>
+        </form>
     </div>
-    </form>
-    </div>
+
     <!-- Keyboard Layout -->
     <div data-keyboard class="keyboard ">
         <button class="key " data-key="Q" id="Q">Q</button>
