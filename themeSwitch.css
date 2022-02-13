@@ -1,3 +1,30 @@
+.navbar-brand {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 600;
+    font-size: 1.5em;
+    text-shadow: 4px 4px 5px white;
+    letter-spacing: 5px;
+}
+
+.btn-primary, .btn-primary:hover, .primary:focus {
+    background-color: #000;
+    border-color: #000;
+}
+
+.btn:hover {
+    background-color: #333;
+    border-color: #333;   
+}
+
+.btn-check:focus+.btn-primary, .btn-primary:focus {
+    background-color: #000;
+    border-color: #000;
+}
+
+
+/* Light & Dark Mode */
+
+/* Toggle Switch */
 input[type="checkbox"] {
     -webkit-appearance: none;
     visibility: hidden;
@@ -50,6 +77,34 @@ input[type="checkbox"]:checked ~ .check:before {
     transform: translateX(50px);
 }
 
+.check:after p {
+    background-color: #000;
+}
+
 input[type="checkbox"]:checked ~ .check:after {
     transform: translateX(0px);
+}
+
+#submit-button {
+    margin-bottom: 5em;
+}
+
+.input-guess {
+    display: grid;
+    place-content: center;
+}
+
+#guess-input {
+    margin-right: .5em;
+}
+
+#submit-button {
+    padding: .25em;   
+}
+
+#submit-button:hover {
+    padding: 10px;
+    border: #000;
+    background-color: rgb(83, 77, 77);
+    color: #fff;
 }
