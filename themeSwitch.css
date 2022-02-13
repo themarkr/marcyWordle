@@ -95,7 +95,7 @@ input[type="checkbox"]:checked ~ .check:after {
 }
 
 #guess-input {
-    margin-right: .5em;
+    margin-right: .25em;
 }
 
 #submit-button {
