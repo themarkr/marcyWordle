@@ -2,7 +2,6 @@ const darkMode = document.querySelector('#Dark-Mode');
 
 const defaultMode = +darkMode.value;
 
-console.log(defaultMode)
 darkMode.addEventListener('input', handleInput);
 
 function handleInput(e) {
@@ -11,4 +10,4 @@ function handleInput(e) {
 }
 
 const allPTags = document.querySelectorAll('p');
-console.log(allPTags)
+// console.log(allPTags)

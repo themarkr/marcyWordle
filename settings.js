@@ -80,18 +80,52 @@ function rowRemover(level) {
     ele.remove();
 }
 
-// /* Element */
-const word_Length = document.querySelector("#word-length");
+/* Word Length ======> */
 
-// /* Default Setting for word length */
-// const wordLengthDefaultSetting = +word_Length.value
+/* Element */
+const wordLength = document.querySelector("#word-length");
+
+/* Default Setting for word length */
+const wordLengthDefaultSetting = +wordLength.value
 // console.log(wordLengthDefaultSetting)
-// /*     */
-// /*     */
-// /*     */
-// /*     */
-// /*     */
-// /*     */
-// /*     */
-// /*     */
+let tempa = wordLengthDefaultSetting;
+
+wordLength.addEventListener('input', handleInput);
+
+function handleInput(e) {
+    const wordLengthLevel = +e.target.value;
+    console.log(wordLengthLevel)
+    // Adding tiles
+    if (tempa < wordLengthLevel) {
+        for (let i = 1; i < wordLengthLevel; i++) {
+            tileMaker(i)
+        }
+    }
+
+    if (tempa > wordLengthLevel) {
+        for (let x = 1; x <= wordLengthLevel; x++) {
+            tileRemover(x)
+        }
+    }
+}
+
+/*     */
+function tileMaker(length) {
+    const p = document.createElement("p");
+    p.className = "tile";
+    const selectedRow = document.querySelector(`#row${length}`);
+    selectedRow.appendChild(p)
+}
+
+function tileRemover(length) {
+    const ele = document.querySelector(`#row${length}`);
+    console.log(ele)
+}
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 
