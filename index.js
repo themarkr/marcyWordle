@@ -4,6 +4,7 @@ window.addEventListener('DOMContentLoaded', () => {
     let numOfRows = board.children.length;
     let attempts = 0;
     let gameOver = false;
+    let currentTile = 0;
 
     const row1Tiles = document.getElementById('row1').children;
     const row2Tiles = document.getElementById('row2').children;
@@ -11,6 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const row4Tiles = document.getElementById('row4').children;
     const row5Tiles = document.getElementById('row5').children;
     const boardStack = [row1Tiles, row2Tiles, row3Tiles, row4Tiles, row5Tiles];
+    console.log(row1Tiles);
 
     const submitButton = document.getElementById('submit-button');
     const newGameButton = document.getElementById('new-game-button');
@@ -34,96 +36,25 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    function changeColor(tile, i, guessWord) {
-        let tileText = tile.innerText;
-        // console.log(tileText);
-        if (tileText === answer[i]) {
-            tile.style.backgroundColor = "#538d4e";
-            tile.style.borderColor = "#538d4e"
-            changeKeyboardColor(tileText.toUpperCase(), "#538d4e", i)
-        } else if (answer.includes(tileText)) {
-            tile.style.backgroundColor = "#b59f3b";
-            tile.style.borderColor = "#b59f3b"
-            changeKeyboardColor(tileText.toUpperCase(), "#b59f3b", i)
-        } else {
-            tile.style.backgroundColor = "#3a3a3c";
-            changeKeyboardColor(tileText.toUpperCase(), "#3a3a3c", i)
-        }
-    }
-
-    function updateTiles(totalAttempts, playerGuess) {
-        switch (totalAttempts) {
-            case 1:
-                // console.log(row1Tiles);
-                for (let i = 0; i < row1Tiles.length; i++) {
-                    row1Tiles[i].innerText = playerGuess[i];
-                    changeColor(row1Tiles[i], i, playerGuess);
-                }
-                break;
-            case 2:
-                for (let i = 0; i < row1Tiles.length; i++) {
-                    row2Tiles[i].innerText = playerGuess[i];
-                    changeColor(row2Tiles[i], i, playerGuess);
-                }
-                break;
-            case 3:
-                for (let i = 0; i < row1Tiles.length; i++) {
-                    row3Tiles[i].innerText = playerGuess[i];
-                    changeColor(row3Tiles[i], i, playerGuess);
-                }
-                break;
-            case 4:
-                for (let i = 0; i < row1Tiles.length; i++) {
-                    row4Tiles[i].innerText = playerGuess[i];
-                    changeColor(row4Tiles[i], i, playerGuess);
-                }
-                break;
-            case 5:
-                for (let i = 0; i < row1Tiles.length; i++) {
-                    row5Tiles[i].innerText = playerGuess[i];
-                    changeColor(row5Tiles[i], i, playerGuess);
-                }
-                break;
-            default:
-                alertMessage.innerText = "GAME OVER!"
-        }
-    }
-
-    // // console.log(numOfRows);
-    // if (attempts >= numOfRows) {
-    //     submitButton.disabled = true;
-    // }
-
-    function onSubmit(event) { // function for when we hit submit
-        event.preventDefault(); // prevent the page from reloading
-        alertMessage.innerText = ""
-        alertMessage.style.visibility = "hidden"
-            //get guess from input field
-        let guess = document.getElementById('guess-input').value.toUpperCase()
-            // input validation 
-            // check if guess is correct length and an english word
-        if (guess.length === answer.length && filteredWordBank.includes(guess.toLowerCase())) {
-            // if it is, update attempts by 1
-            // call update tiles function
-            // reset input field to be blank
-            attempts++;
-            const guessChars = guess.split('');
-            for (const char of guessChars) {
-                charEntries.add(char);
+    function changeColor(row, guessWord) {
+        for (let i = 0; i < row.length; i++) {
+            let tileText = row[i].innerText;
+            let tile = row[i];
+            if (tileText === answer[i]) {
+                tile.style.backgroundColor = "#538d4e";
+                tile.style.borderColor = "#538d4e"
+                changeKeyboardColor(tileText.toUpperCase(), "#538d4e", i)
+            } else
+            if (answer.includes(tileText)) {
+                tile.style.backgroundColor = "#b59f3b";
+                tile.style.borderColor = "#b59f3b"
+                changeKeyboardColor(tileText.toUpperCase(), "#b59f3b", i)
+            } else {
+                tile.style.backgroundColor = "#3a3a3c";
+                changeKeyboardColor(tileText.toUpperCase(), "#3a3a3c", i)
             }
-            console.log(charEntries);
-            updateTiles(attempts, guess);
-        } else if (guess.length === answer.length && !filteredWordBank.includes(guess.toLowerCase())) {
-            alertMessage.style.visibility = "visible"
-            alertMessage.innerText = "Thats not a word!";
-        } else {
-            alertMessage.style.visibility = "visible"
-
-            alertMessage.innerText = "Your guess is too short!"
         }
-        document.getElementById('guess-input').value = "";
     }
-    submitButton.addEventListener('click', onSubmit);
 
     function clearBoard() {
         for (const row of boardStack) {
@@ -143,6 +74,8 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function newGame(event) {
+        alertMessage.innerText = ""
+        alertMessage.style.visibility = "hidden"
         clearBoard();
         resetKeyboard();
         answer = pickWord().toUpperCase();
@@ -151,4 +84,63 @@ window.addEventListener('DOMContentLoaded', () => {
         console.log(answer);
     }
     newGameButton.addEventListener('click', newGame);
+
+
+    function validateGuess(userGuess) {
+        if (userGuess.length !== answer.length) {
+            // jiggle(row);
+            alertMessage.style.visibility = "visible"
+            alertMessage.innerText = "Your guess is too short!"
+            return false
+        } else if (userGuess.length === answer.length && !filteredWordBank.includes(userGuess.toLowerCase())) {
+            alertMessage.style.visibility = "visible"
+            alertMessage.innerText = "Thats not a word!";
+            return false
+        }
+        return true;
+    }
+
+    function getGuess() {
+        let guess = ""
+        for (let i = 0; i < boardStack[attempts].length; i++) {
+            guess += boardStack[attempts][i].innerText;
+        }
+        return guess;
+    }
+
+    function onKeydown(event) {
+        let char = event.key;
+        if (char === "Enter") {
+            alertMessage.innerText = ""
+            alertMessage.style.visibility = "hidden"
+            let guess = getGuess();
+            validateGuess(guess);
+            if (validateGuess(guess)) {
+                for (const char of guess.split("")) {
+                    charEntries.add(char);
+                }
+                console.log(charEntries);
+                changeColor(boardStack[attempts], guess);
+                attempts += 1;
+                currentTile = 0;
+            }
+        }
+        if (char === "Backspace" || char === "Delete") {
+            if (currentTile === 0) {
+                boardStack[attempts][currentTile].innerText = ""
+                return;
+            }
+            currentTile -= 1;
+            boardStack[attempts][currentTile].innerText = "";
+        }
+        if (char.match(/^[a-z]$/)) {
+            if (currentTile >= boardStack[attempts].length) {
+                return;
+            }
+            boardStack[attempts][currentTile].innerText = char.toUpperCase();
+            currentTile += 1;
+        }
+
+    }
+    document.addEventListener("keydown", onKeydown)
 })
