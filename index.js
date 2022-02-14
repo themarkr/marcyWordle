@@ -24,7 +24,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function changeKeyboardColor(char, color, i) {
         const key = document.getElementById(char);
-        console.log(key)
         if (char === answer[i]) {
             key.style.backgroundColor = color;
         } else if (answer.includes(char)) {
@@ -37,7 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function changeColor(tile, i, guessWord) {
         let tileText = tile.innerText;
-        console.log(tileText);
+        // console.log(tileText);
         if (tileText === answer[i]) {
             tile.style.backgroundColor = "#538d4e";
             tile.style.borderColor = "#538d4e"
