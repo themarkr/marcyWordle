@@ -6,13 +6,16 @@ window.addEventListener('DOMContentLoaded', () => {
     let gameOver = false;
 
     const row1Tiles = document.getElementById('row1').children;
-    // const wrong = document.getElementById('')
     const row2Tiles = document.getElementById('row2').children;
     const row3Tiles = document.getElementById('row3').children;
     const row4Tiles = document.getElementById('row4').children;
     const row5Tiles = document.getElementById('row5').children;
+    const boardStack = [row1Tiles, row2Tiles, row3Tiles, row4Tiles, row5Tiles];
     const submitButton = document.getElementById('submit-button');
+    const newGameButton = document.getElementById('new-game-button');
     const errorMessage = document.getElementById('error-message');
+
+    const charEntries = new Set();
 
     let answer = pickWord().toUpperCase();
     console.log(answer);
@@ -102,6 +105,11 @@ window.addEventListener('DOMContentLoaded', () => {
             // call update tiles function
             // reset input field to be blank
             attempts++;
+            const guessChars = guess.split('');
+            for (const char of guessChars) {
+                charEntries.add(char);
+            }
+            console.log(charEntries);
             updateTiles(attempts, guess);
         } else if (guess.length === answer.length && !filteredWordBank.includes(guess.toLowerCase())) {
             errorMessage.innerText = "Thats not a word!";
@@ -111,4 +119,31 @@ window.addEventListener('DOMContentLoaded', () => {
         document.getElementById('guess-input').value = "";
     }
     submitButton.addEventListener('click', onSubmit);
+
+    function clearBoard() {
+        for (const row of boardStack) {
+            for (const tile of row) {
+                tile.innerText = "";
+                tile.style.backgroundColor = "#121213";
+                tile.style.borderColor = "#3a3a3c";
+            }
+        }
+    }
+
+    function resetKeyboard() {
+        for (const char of charEntries) {
+            const matchingKey = document.getElementById(char);
+            matchingKey.style.backgroundColor = "#818384";
+        }
+    }
+
+    function newGame(event) {
+        clearBoard();
+        resetKeyboard();
+        answer = pickWord().toUpperCase();
+        charEntries.clear();
+        attempts = 0;
+        console.log(answer);
+    }
+    newGameButton.addEventListener('click', newGame);
 })
