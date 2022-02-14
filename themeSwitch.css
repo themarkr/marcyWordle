@@ -1,9 +1,14 @@
+/* .navbar {
+    position: sticky;
+    top: 0;
+} */
+
 .navbar-brand {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 600;
     font-size: 1.5em;
     text-shadow: 4px 4px 5px white;
-    letter-spacing: 5px;
+    letter-spacing: 3px;
 }
 
 
@@ -101,6 +106,9 @@ input[type="checkbox"]:checked~.check:after {
 .input-guess {
     display: grid;
     place-content: center;
+    height: 10vh;
+    /* margin-top: 0px; */
+    /* margin-top: 0; */
 }
 
 #guess-input {
