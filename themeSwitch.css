@@ -23,10 +23,9 @@
 /* .btn:hover {
     background-color: #333;
     border-color: #333;
-} */
+}
 
-
-/* .btn-check:focus+.btn-primary,
+.btn-check:focus+.btn-primary,
 .btn-primary:focus {
     background-color: #000;
     border-color: #000;
@@ -98,10 +97,11 @@ input[type="checkbox"]:checked~.check:after {
     transform: translateX(0px);
 }
 
-#submit-button,
+
+/* #submit-button,
 #new-game-button:hover {
     margin-bottom: 5em;
-}
+} */
 
 .input-guess {
     display: grid;
