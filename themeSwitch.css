@@ -1,30 +1,38 @@
 .navbar-brand {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 600;
     font-size: 1.5em;
     text-shadow: 4px 4px 5px white;
     letter-spacing: 5px;
 }
 
-.btn-primary, .btn-primary:hover, .primary:focus {
-    background-color: #000;
-    border-color: #000;
-}
 
-.btn:hover {
+/* .btn-primary,
+.btn-primary:hover,
+.primary:focus {
+    background-color: #212529;
+    border-color: #000;
+} */
+
+
+/* .btn:hover {
     background-color: #333;
-    border-color: #333;   
-}
+    border-color: #333;
+} */
 
-.btn-check:focus+.btn-primary, .btn-primary:focus {
+
+/* .btn-check:focus+.btn-primary,
+.btn-primary:focus {
     background-color: #000;
     border-color: #000;
-}
+} */
 
 
 /* Light & Dark Mode */
 
+
 /* Toggle Switch */
+
 input[type="checkbox"] {
     -webkit-appearance: none;
     visibility: hidden;
@@ -43,7 +51,7 @@ input[type="checkbox"] {
     transition: ease-in 0.5s;
 }
 
-input[type="checkbox"]:checked ~ .check {
+input[type="checkbox"]:checked~.check {
     background-color: #000;
     box-shadow: 0 0 0 1600px #fff;
 }
@@ -60,7 +68,7 @@ input[type="checkbox"]:checked ~ .check {
     transition: 0.5s;
 }
 
-input[type="checkbox"]:checked ~ .check:before {
+input[type="checkbox"]:checked~.check:before {
     transform: translateX(-50px);
 }
 
@@ -81,11 +89,12 @@ input[type="checkbox"]:checked ~ .check:before {
     background-color: #000;
 }
 
-input[type="checkbox"]:checked ~ .check:after {
+input[type="checkbox"]:checked~.check:after {
     transform: translateX(0px);
 }
 
-#submit-button {
+#submit-button,
+#new-game-button:hover {
     margin-bottom: 5em;
 }
 
@@ -98,11 +107,13 @@ input[type="checkbox"]:checked ~ .check:after {
     margin-right: .25em;
 }
 
-#submit-button {
-    padding: .25em;   
+#submit-button,
+#new-game-button:hover {
+    padding: .25em;
 }
 
-#submit-button:hover {
+#submit-button:hover,
+#new-game-button:hover {
     padding: 10px;
     border: #000;
     background-color: rgb(83, 77, 77);

@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-light bg-secondary">
         <div class="container-fluid">
             <a class="navbar-brand">BETTER WORDLE</a>
@@ -22,8 +23,8 @@
                 <span class="check"></span>
             </label>
             <div class="d-flex">
-                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    Settings
+                <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" id="settings-button">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Windows_Settings_app_icon.png/240px-Windows_Settings_app_icon.png" height="20px" width="20px">
                   </button>
             </div>
         </div>
@@ -98,7 +99,10 @@
         </div>
     </div>
 
-    <div id="error-message"></div>
+    <!-- Alert Message -->
+    <div class="alert alert-secondary" role="alert" id="alert-message">
+
+    </div>
 
     <!-- Input Fields -->
     <div class="input-guess">

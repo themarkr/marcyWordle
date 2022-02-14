@@ -11,9 +11,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const row4Tiles = document.getElementById('row4').children;
     const row5Tiles = document.getElementById('row5').children;
     const boardStack = [row1Tiles, row2Tiles, row3Tiles, row4Tiles, row5Tiles];
+
     const submitButton = document.getElementById('submit-button');
     const newGameButton = document.getElementById('new-game-button');
-    const errorMessage = document.getElementById('error-message');
+    const alertMessage = document.getElementById('alert-message');
+    alertMessage.style.visibility = "hidden"
 
     const charEntries = new Set();
 
@@ -84,7 +86,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
                 break;
             default:
-                errorMessage.innerText = "GAME OVER!"
+                alertMessage.innerText = "GAME OVER!"
         }
     }
 
@@ -95,7 +97,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function onSubmit(event) { // function for when we hit submit
         event.preventDefault(); // prevent the page from reloading
-        errorMessage.innerText = ""
+        alertMessage.innerText = ""
+        alertMessage.style.visibility = "hidden"
             //get guess from input field
         let guess = document.getElementById('guess-input').value.toUpperCase()
             // input validation 
@@ -112,9 +115,12 @@ window.addEventListener('DOMContentLoaded', () => {
             console.log(charEntries);
             updateTiles(attempts, guess);
         } else if (guess.length === answer.length && !filteredWordBank.includes(guess.toLowerCase())) {
-            errorMessage.innerText = "Thats not a word!";
+            alertMessage.style.visibility = "visible"
+            alertMessage.innerText = "Thats not a word!";
         } else {
-            errorMessage.innerText = "Your guess is too short!"
+            alertMessage.style.visibility = "visible"
+
+            alertMessage.innerText = "Your guess is too short!"
         }
         document.getElementById('guess-input').value = "";
     }
