@@ -36,6 +36,37 @@
                 font-weight: bold;
                 color: white;
             }
+
+            .modal-body .demoDiv {
+                display: flex;
+            }
+
+            .demoDiv .flex-row {
+                flex-direction: row;
+            }
+
+            
+            h6 {
+                margin-top: 1em;
+                margin-bottom: 1em;
+            }
+
+            .green {
+                background-color: #449526;
+                border-color: #449526;
+            }
+
+            .yellow {
+                background-color: #c7a110;
+                border-color: #c7a110;
+            }
+
+            .black {
+                background-color: #808080;
+                border-color: #808080;
+            }
+
+
             
             .class {
                 display: grid;
