@@ -246,7 +246,7 @@ const masterWordBank = [
     "your", "yourself", "youth", "zero", "zebra", "zipper", "zoo", "zulu"
 ];
 const wordSize = parseInt(document.getElementById('word-length').value)
-const filteredWordBank = masterWordBank.filter(word => word.length === wordSize);
+let filteredWordBank = masterWordBank.filter(word => word.length === wordSize);
 
 function pickWord() {
     const bankSize = filteredWordBank.length;
