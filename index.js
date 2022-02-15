@@ -2,16 +2,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const board = document.querySelector('#board')
     let numOfRows = board.children.length;
-    let attempts = 0;
     let gameOver = false;
-    let currentTile = 0;
 
-    const row1Tiles = document.getElementById('row1').children;
-    const row2Tiles = document.getElementById('row2').children;
-    const row3Tiles = document.getElementById('row3').children;
-    const row4Tiles = document.getElementById('row4').children;
-    const row5Tiles = document.getElementById('row5').children;
-    const boardStack = [row1Tiles, row2Tiles, row3Tiles, row4Tiles, row5Tiles];
     console.log(row1Tiles);
 
     const submitButton = document.getElementById('submit-button');
@@ -21,7 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const charEntries = new Set();
 
-    let answer = pickWord().toUpperCase();
+    // let answer = pickWord().toUpperCase();
     console.log(answer);
 
     function changeKeyboardColor(char, color, i) {
@@ -56,15 +48,15 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function clearBoard() {
-        for (const row of boardStack) {
-            for (const tile of row) {
-                tile.innerText = "";
-                tile.style.backgroundColor = "#121213";
-                tile.style.borderColor = "#3a3a3c";
-            }
-        }
-    }
+    // function clearBoard() {
+    //     for (const row of boardStack) {
+    //         for (const tile of row) {
+    //             tile.innerText = "";
+    //             tile.style.backgroundColor = "#121213";
+    //             tile.style.borderColor = "#3a3a3c";
+    //         }
+    //     }
+    // }
 
     function resetKeyboard() {
         for (const char of charEntries) {
@@ -81,18 +73,23 @@ window.addEventListener('DOMContentLoaded', () => {
         answer = pickWord().toUpperCase();
         charEntries.clear();
         attempts = 0;
+        gameOver = false;
         console.log(answer);
     }
     newGameButton.addEventListener('click', newGame);
 
 
     function validateGuess(userGuess) {
+        if (userGuess === answer) {
+            gameOver = true;
+        }
         if (userGuess.length !== answer.length) {
             // jiggle(row);
             alertMessage.style.visibility = "visible"
             alertMessage.innerText = "Your guess is too short!"
             return false
-        } else if (userGuess.length === answer.length && !filteredWordBank.includes(userGuess.toLowerCase())) {
+        } else
+        if (userGuess.length === answer.length && !filteredWordBank.includes(userGuess.toLowerCase())) {
             alertMessage.style.visibility = "visible"
             alertMessage.innerText = "Thats not a word!";
             return false
@@ -109,6 +106,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function onKeydown(event) {
+        if (gameOver) return;
         let char = event.key;
         if (char === "Enter") {
             alertMessage.innerText = ""
