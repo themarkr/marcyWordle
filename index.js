@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
-
+    console.log(masterWordBank.length)
     const board = document.querySelector('#board')
     let numOfRows = board.children.length;
     let attempts = 0;
