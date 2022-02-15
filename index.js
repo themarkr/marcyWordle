@@ -73,7 +73,9 @@ window.addEventListener('DOMContentLoaded', () => {
         answer = pickWord().toUpperCase();
         charEntries.clear();
         attempts = 0;
+
         gameOver = false;
+
         console.log(answer);
     }
     newGameButton.addEventListener('click', newGame);
@@ -108,7 +110,11 @@ window.addEventListener('DOMContentLoaded', () => {
     function onKeydown(event) {
         if (gameOver) return;
         let char = event.key;
+        if (attempts >= boardStack.length || currentTile > boardStack[attempts].length || gameOver) {
+            return;
+        }
         if (char === "Enter") {
+
             alertMessage.innerText = ""
             alertMessage.style.visibility = "hidden"
             let guess = getGuess();
@@ -119,6 +125,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
                 console.log(charEntries);
                 changeColor(boardStack[attempts], guess);
+                if (guess === answer) {
+                    gameOver = true
+                }
                 attempts += 1;
                 currentTile = 0;
             }
@@ -132,13 +141,13 @@ window.addEventListener('DOMContentLoaded', () => {
             boardStack[attempts][currentTile].innerText = "";
         }
         if (char.match(/^[a-z]$/)) {
-            if (currentTile >= boardStack[attempts].length) {
-                return;
-            }
-            boardStack[attempts][currentTile].innerText = char.toUpperCase();
-            currentTile += 1;
-        }
+            if (currentTile < boardStack[attempts].length && attempts < boardStack.length) {
 
+                boardStack[attempts][currentTile].innerText = char.toUpperCase();
+                currentTile += 1;
+
+            }
+        }
     }
     document.addEventListener("keydown", onKeydown)
 })
