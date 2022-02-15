@@ -23,6 +23,9 @@
                 <span class="check"></span>
             </label>
             <div class="d-flex">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    How To Play
+                  </button>
                 <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" id="settings-button">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Windows_Settings_app_icon.png/240px-Windows_Settings_app_icon.png" height="20px" width="20px">
                   </button>
@@ -56,6 +59,32 @@
             </div>
             <div>
                 Changing the Word Length will increase or reduce the number of tiles per row. ***Adjusting the value of the slider, will start a new game***
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">HOW TO PLAY</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Guess the WORDLE in six tries.</p>
+                    <p>Each guess must be a valid five-letter word. Hit the enter button to submit.</p>
+                    <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
+                    <div id="demoDiv">
+                        <p class="tile"></p>
+                        <p class="tile"></p>
+                        <p class="tile"></p>
+                        <p class="tile"></p>
+                        <p class="tile"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
             </div>
         </div>
     </div>
