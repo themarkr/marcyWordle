@@ -85,13 +85,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
     shareButton.addEventListener('click', shareScore);
 
-    // function jiggle(attempt) {
-    //     const rowID = `row${attempt+1}`
-    //     console.log(rowID, "attemp+1")
-    //     const row = document.getElementById(rowID);
-    //     console.log(row)
-    //     row.style.anamation = "shake 0.82s cubic-bezier(.36, .07, .19, .97) both"
-    // }
+    function jiggle(row) {
+        for (let i = 0; i < row.length; i++) {
+            row[i].classList.add("shake")
+            row[i].addEventListener("animationend", () => {
+                row[i].classList.remove("shake")
+            }, { once: true })
+        }
+    }
 
     function validateGuess(userGuess) {
         if (userGuess === answer) {
@@ -101,9 +102,8 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         if (userGuess.length !== answer.length) {
             alertMessage.style.visibility = "visible";
-            // console.log("jiggle")
-            // jiggle(attempts);
             alertMessage.innerText = "Your guess is too short!";
+            jiggle(boardStack[attempts]);
             return false;
         } else
         if (userGuess.length === answer.length && !filteredWordBank.includes(userGuess.toLowerCase())) {
@@ -111,6 +111,7 @@ window.addEventListener('DOMContentLoaded', () => {
             // jiggle(attempts);
             alertMessage.style.visibility = "visible";
             alertMessage.innerText = "Thats not a word!";
+            jiggle(boardStack[attempts]);
             return false
         }
         return true;
