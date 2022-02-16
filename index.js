@@ -79,6 +79,8 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         console.log(text);
         navigator.clipboard.writeText(text);
+        alertMessage.style.visibility = 'visible';
+        alertMessage.innerText = "Copied to clipboard!";
     }
 
     shareButton.addEventListener('click', shareScore);
