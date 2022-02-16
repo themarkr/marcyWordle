@@ -1,20 +1,14 @@
 window.addEventListener('DOMContentLoaded', () => {
     console.log(masterWordBank.length)
     const board = document.querySelector('#board')
-    let numOfRows = board.children.length;
     let gameOver = false;
 
-    console.log(row1Tiles);
-
-    const submitButton = document.getElementById('submit-button');
     const newGameButton = document.getElementById('new-game-button');
+    const shareButton = document.getElementById('share-button');
     const alertMessage = document.getElementById('alert-message');
     alertMessage.style.visibility = "hidden"
-
-    const charEntries = new Set();
-
-    // let answer = pickWord().toUpperCase();
-    console.log(answer);
+    shareButton.style.visibility = "hidden"
+    console.log(boardStack.length);
 
     function changeKeyboardColor(char, color, i) {
         const key = document.getElementById(char);
@@ -26,7 +20,6 @@ window.addEventListener('DOMContentLoaded', () => {
             key.style.backgroundColor = color;
         }
     }
-
 
     function changeColor(row, guessWord) {
         for (let i = 0; i < row.length; i++) {
@@ -48,51 +41,73 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // function clearBoard() {
-    //     for (const row of boardStack) {
-    //         for (const tile of row) {
-    //             tile.innerText = "";
-    //             tile.style.backgroundColor = "#121213";
-    //             tile.style.borderColor = "#3a3a3c";
-    //         }
-    //     }
-    // }
 
-    function resetKeyboard() {
-        for (const char of charEntries) {
-            const matchingKey = document.getElementById(char);
-            matchingKey.style.backgroundColor = "#818384";
-        }
-    }
 
     function newGame(event) {
         alertMessage.innerText = ""
         alertMessage.style.visibility = "hidden"
+        shareButton.style.visibility = "hidden"
         clearBoard();
         resetKeyboard();
         answer = pickWord().toUpperCase();
         charEntries.clear();
         attempts = 0;
-
         gameOver = false;
-
         console.log(answer);
     }
     newGameButton.addEventListener('click', newGame);
 
+    function shareScore() {
+        let text = "Better Wordle\n"
+        for (const row of boardStack) {
+            if (row[0].innerText) {
+                for (const tile of row) {
+                    let color = tile.style.backgroundColor;
+                    console.log(color);
+                    if (color === "rgb(83, 141, 78)") {
+                        text += "🟩";
+                    } else
+                    if (color === "rgb(181, 159, 59)") {
+                        text += "🟨";
+                    } else {
+                        text += "⬛";
+                    }
+
+                }
+                text += "\n"
+            }
+        }
+        console.log(text);
+        navigator.clipboard.writeText(text);
+    }
+
+    shareButton.addEventListener('click', shareScore);
+
+    // function jiggle(attempt) {
+    //     const rowID = `row${attempt+1}`
+    //     console.log(rowID, "attemp+1")
+    //     const row = document.getElementById(rowID);
+    //     console.log(row)
+    //     row.style.anamation = "shake 0.82s cubic-bezier(.36, .07, .19, .97) both"
+    // }
 
     function validateGuess(userGuess) {
         if (userGuess === answer) {
             gameOver = true;
+            shareButton.style.visibility = "visible";
+            console.log(gameOver);
         }
         if (userGuess.length !== answer.length) {
-            // jiggle(row);
-            alertMessage.style.visibility = "visible"
-            alertMessage.innerText = "Your guess is too short!"
-            return false
+            alertMessage.style.visibility = "visible";
+            // console.log("jiggle")
+            // jiggle(attempts);
+            alertMessage.innerText = "Your guess is too short!";
+            return false;
         } else
         if (userGuess.length === answer.length && !filteredWordBank.includes(userGuess.toLowerCase())) {
-            alertMessage.style.visibility = "visible"
+            // console.log("jiggle")
+            // jiggle(attempts);
+            alertMessage.style.visibility = "visible";
             alertMessage.innerText = "Thats not a word!";
             return false
         }
@@ -130,6 +145,10 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
                 attempts += 1;
                 currentTile = 0;
+                if (attempts > boardStack.length - 1) {
+                    shareButton.style.visibility = "visible";
+                }
+                console.log(attempts);
             }
         }
         if (char === "Backspace" || char === "Delete") {
