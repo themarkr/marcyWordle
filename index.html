@@ -34,9 +34,10 @@
     </nav>
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Settings Menu</h5>
+            <h2 class="offcanvas-title" id="offcanvasExampleLabel">Settings Menu</h2>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
+        <hr>
         <div class="offcanvas-body">
             <div class="dropdown mt-3">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
@@ -47,8 +48,14 @@
                 </ul>
             </div>
             <div>
-                Changing the value of the difficulty slider willincrease or reduce the number of attempts per game. The higher the difficulty, the less number to total attempts. ***Adjusting the value of the slider will start a new game***
+                <p class="setting">
+                Changing the value of the difficulty slider will increase or reduce the number of attempts per game. The higher the difficulty, the more total attempts you have available.
+                <br> 
+                <br>
+                <em><strong>Adjusting the value of the slider will start a new game</strong></em>
+            </p>
             </div>
+            <hr>
             <div class="dropdown mt-3">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
               Word Length
@@ -58,7 +65,11 @@
                 </ul>
             </div>
             <div>
-                Changing the Word Length will increase or reduce the number of tiles per row. ***Adjusting the value of the slider, will start a new game***
+                <p class="setting"> 
+                Changing the word length will increase or reduce the number of tiles per row.<br> 
+                <br>
+                <em><strong>Adjusting the value of the slider will start a new game</strong></em>
+                </p>
             </div>
         </div>
     </div>
