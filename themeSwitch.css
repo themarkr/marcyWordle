@@ -57,7 +57,7 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked~.check {
     background-color: #000;
-    box-shadow: 0 0 0 1600px #fff;
+    /* box-shadow: 0 0 0 1600px #fff; */
 }
 
 .check:before {
@@ -127,3 +127,17 @@ input[type="checkbox"]:checked~.check:after {
     background-color: rgb(83, 77, 77);
     color: #fff;
 }
+
+body {
+    transition: 1.2s;
+}
+
+body.white {
+    background-color: white;
+}
+
+.tile.white {
+    background-color: white;
+    border-color: black;
+}
+
