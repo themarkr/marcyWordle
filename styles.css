@@ -36,45 +36,43 @@
                 font-weight: bold;
                 color: white;
             }
-
+            
             .modal-body .demoDiv {
                 display: flex;
             }
-
+            
             .demoDiv .flex-row {
                 flex-direction: row;
             }
-
+            
             .demoDiv .tile {
                 border-color: transparent;
             }
-
+            
             hr {
                 border: 5px solid black;
                 border-radius: 5px;
-              }
+            }
             
             h6 {
                 margin-top: 1em;
                 margin-bottom: 1em;
             }
-
+            
             .green {
                 background-color: #449526;
                 border-color: #449526;
             }
-
+            
             .yellow {
                 background-color: #c7a110;
                 border-color: #c7a110;
             }
-
+            
             .black {
                 background-color: #808080;
                 border-color: #808080;
             }
-
-
             
             .class {
                 display: grid;
@@ -95,24 +93,49 @@
                 margin-right: 30%;
                 margin-left: 30%;
             }
-
+            
             #new-game-button {
                 padding: 5px;
                 font-weight: 500;
                 background-color: #252527;
                 border-color: #252527;
             }
-
+            
             .btn-primary {
                 color: #fff;
                 background-color: #000000;
                 border-color: #000000;
                 margin-right: 10px;
             }
-
+            
             .btn-primary:hover,
             .btn-primary:focus {
                 background-color: white;
                 border-color: white;
                 color: black;
+            }
+            
+            .tile.shake {
+                animation: shake 250ms ease-in-out;
+            }
+            
+            @keyframes shake {
+                10% {
+                    transform: translateX(-5%);
+                }
+                30% {
+                    transform: translateX(5%);
+                }
+                50% {
+                    transform: translateX(-7.5%)
+                }
+                70% {
+                    transform: translateX(7.5%);
+                }
+                90% {
+                    transform: translateX(-5%);
+                }
+                100% {
+                    transform: translateX(0);
+                }
             }
