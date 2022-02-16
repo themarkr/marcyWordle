@@ -70,20 +70,36 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Guess the WORDLE in six tries.</p>
+                    <p>Guess the WORDLE in five tries.</p>
                     <p>Each guess must be a valid five-letter word. Hit the enter button to submit.</p>
                     <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
-                    <div id="demoDiv">
-                        <p class="tile"></p>
-                        <p class="tile"></p>
-                        <p class="tile"></p>
-                        <p class="tile"></p>
-                        <p class="tile"></p>
+                    <hr>
+                    <h6>Examples</h6>
+                    <div class="demoDiv">
+                        <p class="tile flex-row green">W</p>
+                        <p class="tile">O</p>
+                        <p class="tile">R</p>
+                        <p class="tile">R</p>
+                        <p class="tile">Y</p>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <h6>The letter <strong><em>W</em></strong> is in the word and in the correct spot.</h6>
+                    <div class="demoDiv">
+                        <p class="tile flex-row">B</p>
+                        <p class="tile yellow">I</p>
+                        <p class="tile">L</p>
+                        <p class="tile">L</p>
+                        <p class="tile">S</p>
+                    </div>
+                    <h6>The letter <strong><em>I</em></strong> is in the word but in the wrong spot.</h6>
+                    <div class="demoDiv">
+                        <p class="tile flex-row">A</p>
+                        <p class="tile">N</p>
+                        <p class="tile">G</p>
+                        <p class="tile black">E</p>
+                        <p class="tile">R</p>
+                    </div>
+                    <h6>The letter <strong><em>E</em></strong> is not in the word in any spot.</h6>
+                    <hr>
                 </div>
             </div>
         </div>
