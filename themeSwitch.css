@@ -123,7 +123,7 @@ input[type="checkbox"]:checked~.check:after {
 #submit-button:hover,
 #new-game-button:hover {
     padding: 10px;
-    border: #000;
+    border: rgb(83, 77, 77);
     background-color: rgb(83, 77, 77);
     color: #fff;
 }
@@ -139,5 +139,12 @@ body.white {
 .tile.white {
     background-color: white;
     border-color: black;
+}
+
+.setting {
+    margin-top: 1em;
+    font-size: 1.2em;
+    font-family: "Lucida Console", "Courier New", monospace;
+    /* color: red; */
 }
 
