@@ -148,3 +148,16 @@ body.white {
     /* color: red; */
 }
 
+/* Breakpoints */
+
+@media screen and (max-width: 1280px) {
+    .board {
+        width: 100vw;
+        height: 68vh;
+        display: grid;
+        grid-gap: 10px;
+        place-content: center;
+        grid-template-rows: repeat(6, auto);
+    }
+}
+
